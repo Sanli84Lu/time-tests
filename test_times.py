@@ -1,4 +1,13 @@
 from times import compute_overlap_time, time_range
+import pytest
+
+@pytest.fixture
+def range1():
+    return time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
+
+@pytest.fixture
+def range2():
+    return time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
 
 def test_generic_case():
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
@@ -26,4 +35,4 @@ if __name__ == "__main__":
     short = time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
     test_overlap(large,short)
     # test_gap(large,short)
-    test_end_start(large,short)
+    # test_end_start(large,short)
